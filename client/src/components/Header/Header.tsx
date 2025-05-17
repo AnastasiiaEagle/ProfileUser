@@ -25,10 +25,10 @@ export default function Header() {
 
 
     return(
-        <header className="flex justify-between items-center p-4 bg-gray-800 text-white">
+        <header className="flex justify-between items-center p-3 bg-gray-800 text-white">
             <ul className="flex space-x-4">
             </ul>
-            <button onClick={handleExit} className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+            <button onClick={handleExit} className="bg-red-500 text-white py-1 px-5 rounded-lg hover:bg-blue-600">
                 Вихід
             </button>
         </header>

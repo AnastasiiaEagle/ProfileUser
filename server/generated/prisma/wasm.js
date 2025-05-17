@@ -124,8 +124,14 @@ exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
+  avatarUserId: 'avatarUserId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AvatarUserScalarFieldEnum = {
+  id: 'id',
+  avatar_url: 'avatar_url'
 };
 
 exports.Prisma.SortOrder = {
@@ -138,9 +144,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  Users: 'Users'
+  Users: 'Users',
+  AvatarUser: 'AvatarUser'
 };
 
 /**

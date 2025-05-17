@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Users = $Result.DefaultSelection<Prisma.$UsersPayload>
+/**
+ * Model AvatarUser
+ * 
+ */
+export type AvatarUser = $Result.DefaultSelection<Prisma.$AvatarUserPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.UsersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avatarUser`: Exposes CRUD operations for the **AvatarUser** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AvatarUsers
+    * const avatarUsers = await prisma.avatarUser.findMany()
+    * ```
+    */
+  get avatarUser(): Prisma.AvatarUserDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Users: 'Users'
+    Users: 'Users',
+    AvatarUser: 'AvatarUser'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users"
+      modelProps: "users" | "avatarUser"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UsersCountArgs<ExtArgs>
             result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+      AvatarUser: {
+        payload: Prisma.$AvatarUserPayload<ExtArgs>
+        fields: Prisma.AvatarUserFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvatarUserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvatarUserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          findFirst: {
+            args: Prisma.AvatarUserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvatarUserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          findMany: {
+            args: Prisma.AvatarUserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>[]
+          }
+          create: {
+            args: Prisma.AvatarUserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          createMany: {
+            args: Prisma.AvatarUserCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AvatarUserCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>[]
+          }
+          delete: {
+            args: Prisma.AvatarUserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          update: {
+            args: Prisma.AvatarUserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvatarUserDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvatarUserUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AvatarUserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>[]
+          }
+          upsert: {
+            args: Prisma.AvatarUserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarUserPayload>
+          }
+          aggregate: {
+            args: Prisma.AvatarUserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvatarUser>
+          }
+          groupBy: {
+            args: Prisma.AvatarUserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvatarUserGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvatarUserCountArgs<ExtArgs>
+            result: $Utils.Optional<AvatarUserCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     users?: UsersOmit
+    avatarUser?: AvatarUserOmit
   }
 
   /* Types for Logging */
@@ -883,6 +974,7 @@ export namespace Prisma {
     id: string | null
     email: string | null
     password: string | null
+    avatarUserId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -891,6 +983,7 @@ export namespace Prisma {
     id: string | null
     email: string | null
     password: string | null
+    avatarUserId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -899,6 +992,7 @@ export namespace Prisma {
     id: number
     email: number
     password: number
+    avatarUserId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -909,6 +1003,7 @@ export namespace Prisma {
     id?: true
     email?: true
     password?: true
+    avatarUserId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -917,6 +1012,7 @@ export namespace Prisma {
     id?: true
     email?: true
     password?: true
+    avatarUserId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -925,6 +1021,7 @@ export namespace Prisma {
     id?: true
     email?: true
     password?: true
+    avatarUserId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1006,6 +1103,7 @@ export namespace Prisma {
     id: string
     email: string
     password: string
+    avatarUserId: string | null
     createdAt: Date
     updatedAt: Date
     _count: UsersCountAggregateOutputType | null
@@ -1031,43 +1129,62 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
+    avatarUserId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
+    avatarUserId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
+    avatarUserId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectScalar = {
     id?: boolean
     email?: boolean
     password?: boolean
+    avatarUserId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "avatarUserId" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
+  export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
+  }
+  export type UsersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
+  }
+  export type UsersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avatarUse?: boolean | Users$avatarUseArgs<ExtArgs>
+  }
 
   export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Users"
-    objects: {}
+    objects: {
+      avatarUse: Prisma.$AvatarUserPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
       password: string
+      avatarUserId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["users"]>
@@ -1464,6 +1581,7 @@ export namespace Prisma {
    */
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    avatarUse<T extends Users$avatarUseArgs<ExtArgs> = {}>(args?: Subset<T, Users$avatarUseArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1496,6 +1614,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Users", 'String'>
     readonly email: FieldRef<"Users", 'String'>
     readonly password: FieldRef<"Users", 'String'>
+    readonly avatarUserId: FieldRef<"Users", 'String'>
     readonly createdAt: FieldRef<"Users", 'DateTime'>
     readonly updatedAt: FieldRef<"Users", 'DateTime'>
   }
@@ -1515,6 +1634,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where: UsersWhereUniqueInput
@@ -1533,6 +1656,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where: UsersWhereUniqueInput
@@ -1550,6 +1677,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * Filter, which Users to fetch.
      */
@@ -1599,6 +1730,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UsersWhereInput
@@ -1647,6 +1782,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UsersWhereInput
@@ -1690,6 +1829,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * The data needed to create a Users.
      */
     data: XOR<UsersCreateInput, UsersUncheckedCreateInput>
@@ -1723,6 +1866,10 @@ export namespace Prisma {
      */
     data: UsersCreateManyInput | UsersCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1737,6 +1884,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * The data needed to update a Users.
      */
@@ -1789,6 +1940,10 @@ export namespace Prisma {
      * Limit how many Users to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1803,6 +1958,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * The filter to search for the Users to update in case it exists.
      */
@@ -1830,6 +1989,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter which Users to delete.
      */
     where: UsersWhereUniqueInput
@@ -1850,6 +2013,25 @@ export namespace Prisma {
   }
 
   /**
+   * Users.avatarUse
+   */
+  export type Users$avatarUseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    where?: AvatarUserWhereInput
+  }
+
+  /**
    * Users without action
    */
   export type UsersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1861,6 +2043,1034 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AvatarUser
+   */
+
+  export type AggregateAvatarUser = {
+    _count: AvatarUserCountAggregateOutputType | null
+    _min: AvatarUserMinAggregateOutputType | null
+    _max: AvatarUserMaxAggregateOutputType | null
+  }
+
+  export type AvatarUserMinAggregateOutputType = {
+    id: string | null
+    avatar_url: string | null
+  }
+
+  export type AvatarUserMaxAggregateOutputType = {
+    id: string | null
+    avatar_url: string | null
+  }
+
+  export type AvatarUserCountAggregateOutputType = {
+    id: number
+    avatar_url: number
+    _all: number
+  }
+
+
+  export type AvatarUserMinAggregateInputType = {
+    id?: true
+    avatar_url?: true
+  }
+
+  export type AvatarUserMaxAggregateInputType = {
+    id?: true
+    avatar_url?: true
+  }
+
+  export type AvatarUserCountAggregateInputType = {
+    id?: true
+    avatar_url?: true
+    _all?: true
+  }
+
+  export type AvatarUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AvatarUser to aggregate.
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AvatarUsers to fetch.
+     */
+    orderBy?: AvatarUserOrderByWithRelationInput | AvatarUserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvatarUserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AvatarUsers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AvatarUsers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AvatarUsers
+    **/
+    _count?: true | AvatarUserCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvatarUserMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvatarUserMaxAggregateInputType
+  }
+
+  export type GetAvatarUserAggregateType<T extends AvatarUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvatarUser]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvatarUser[P]>
+      : GetScalarType<T[P], AggregateAvatarUser[P]>
+  }
+
+
+
+
+  export type AvatarUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvatarUserWhereInput
+    orderBy?: AvatarUserOrderByWithAggregationInput | AvatarUserOrderByWithAggregationInput[]
+    by: AvatarUserScalarFieldEnum[] | AvatarUserScalarFieldEnum
+    having?: AvatarUserScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvatarUserCountAggregateInputType | true
+    _min?: AvatarUserMinAggregateInputType
+    _max?: AvatarUserMaxAggregateInputType
+  }
+
+  export type AvatarUserGroupByOutputType = {
+    id: string
+    avatar_url: string
+    _count: AvatarUserCountAggregateOutputType | null
+    _min: AvatarUserMinAggregateOutputType | null
+    _max: AvatarUserMaxAggregateOutputType | null
+  }
+
+  type GetAvatarUserGroupByPayload<T extends AvatarUserGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvatarUserGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvatarUserGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvatarUserGroupByOutputType[P]>
+            : GetScalarType<T[P], AvatarUserGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvatarUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    avatar_url?: boolean
+    user?: boolean | AvatarUser$userArgs<ExtArgs>
+  }, ExtArgs["result"]["avatarUser"]>
+
+  export type AvatarUserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    avatar_url?: boolean
+  }, ExtArgs["result"]["avatarUser"]>
+
+  export type AvatarUserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    avatar_url?: boolean
+  }, ExtArgs["result"]["avatarUser"]>
+
+  export type AvatarUserSelectScalar = {
+    id?: boolean
+    avatar_url?: boolean
+  }
+
+  export type AvatarUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "avatar_url", ExtArgs["result"]["avatarUser"]>
+  export type AvatarUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | AvatarUser$userArgs<ExtArgs>
+  }
+  export type AvatarUserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AvatarUserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $AvatarUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AvatarUser"
+    objects: {
+      user: Prisma.$UsersPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      avatar_url: string
+    }, ExtArgs["result"]["avatarUser"]>
+    composites: {}
+  }
+
+  type AvatarUserGetPayload<S extends boolean | null | undefined | AvatarUserDefaultArgs> = $Result.GetResult<Prisma.$AvatarUserPayload, S>
+
+  type AvatarUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvatarUserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvatarUserCountAggregateInputType | true
+    }
+
+  export interface AvatarUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AvatarUser'], meta: { name: 'AvatarUser' } }
+    /**
+     * Find zero or one AvatarUser that matches the filter.
+     * @param {AvatarUserFindUniqueArgs} args - Arguments to find a AvatarUser
+     * @example
+     * // Get one AvatarUser
+     * const avatarUser = await prisma.avatarUser.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvatarUserFindUniqueArgs>(args: SelectSubset<T, AvatarUserFindUniqueArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AvatarUser that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvatarUserFindUniqueOrThrowArgs} args - Arguments to find a AvatarUser
+     * @example
+     * // Get one AvatarUser
+     * const avatarUser = await prisma.avatarUser.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvatarUserFindUniqueOrThrowArgs>(args: SelectSubset<T, AvatarUserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AvatarUser that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserFindFirstArgs} args - Arguments to find a AvatarUser
+     * @example
+     * // Get one AvatarUser
+     * const avatarUser = await prisma.avatarUser.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvatarUserFindFirstArgs>(args?: SelectSubset<T, AvatarUserFindFirstArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AvatarUser that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserFindFirstOrThrowArgs} args - Arguments to find a AvatarUser
+     * @example
+     * // Get one AvatarUser
+     * const avatarUser = await prisma.avatarUser.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvatarUserFindFirstOrThrowArgs>(args?: SelectSubset<T, AvatarUserFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AvatarUsers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AvatarUsers
+     * const avatarUsers = await prisma.avatarUser.findMany()
+     * 
+     * // Get first 10 AvatarUsers
+     * const avatarUsers = await prisma.avatarUser.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avatarUserWithIdOnly = await prisma.avatarUser.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvatarUserFindManyArgs>(args?: SelectSubset<T, AvatarUserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AvatarUser.
+     * @param {AvatarUserCreateArgs} args - Arguments to create a AvatarUser.
+     * @example
+     * // Create one AvatarUser
+     * const AvatarUser = await prisma.avatarUser.create({
+     *   data: {
+     *     // ... data to create a AvatarUser
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvatarUserCreateArgs>(args: SelectSubset<T, AvatarUserCreateArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AvatarUsers.
+     * @param {AvatarUserCreateManyArgs} args - Arguments to create many AvatarUsers.
+     * @example
+     * // Create many AvatarUsers
+     * const avatarUser = await prisma.avatarUser.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvatarUserCreateManyArgs>(args?: SelectSubset<T, AvatarUserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AvatarUsers and returns the data saved in the database.
+     * @param {AvatarUserCreateManyAndReturnArgs} args - Arguments to create many AvatarUsers.
+     * @example
+     * // Create many AvatarUsers
+     * const avatarUser = await prisma.avatarUser.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AvatarUsers and only return the `id`
+     * const avatarUserWithIdOnly = await prisma.avatarUser.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AvatarUserCreateManyAndReturnArgs>(args?: SelectSubset<T, AvatarUserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AvatarUser.
+     * @param {AvatarUserDeleteArgs} args - Arguments to delete one AvatarUser.
+     * @example
+     * // Delete one AvatarUser
+     * const AvatarUser = await prisma.avatarUser.delete({
+     *   where: {
+     *     // ... filter to delete one AvatarUser
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvatarUserDeleteArgs>(args: SelectSubset<T, AvatarUserDeleteArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AvatarUser.
+     * @param {AvatarUserUpdateArgs} args - Arguments to update one AvatarUser.
+     * @example
+     * // Update one AvatarUser
+     * const avatarUser = await prisma.avatarUser.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvatarUserUpdateArgs>(args: SelectSubset<T, AvatarUserUpdateArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AvatarUsers.
+     * @param {AvatarUserDeleteManyArgs} args - Arguments to filter AvatarUsers to delete.
+     * @example
+     * // Delete a few AvatarUsers
+     * const { count } = await prisma.avatarUser.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvatarUserDeleteManyArgs>(args?: SelectSubset<T, AvatarUserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AvatarUsers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AvatarUsers
+     * const avatarUser = await prisma.avatarUser.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvatarUserUpdateManyArgs>(args: SelectSubset<T, AvatarUserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AvatarUsers and returns the data updated in the database.
+     * @param {AvatarUserUpdateManyAndReturnArgs} args - Arguments to update many AvatarUsers.
+     * @example
+     * // Update many AvatarUsers
+     * const avatarUser = await prisma.avatarUser.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AvatarUsers and only return the `id`
+     * const avatarUserWithIdOnly = await prisma.avatarUser.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AvatarUserUpdateManyAndReturnArgs>(args: SelectSubset<T, AvatarUserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AvatarUser.
+     * @param {AvatarUserUpsertArgs} args - Arguments to update or create a AvatarUser.
+     * @example
+     * // Update or create a AvatarUser
+     * const avatarUser = await prisma.avatarUser.upsert({
+     *   create: {
+     *     // ... data to create a AvatarUser
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AvatarUser we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvatarUserUpsertArgs>(args: SelectSubset<T, AvatarUserUpsertArgs<ExtArgs>>): Prisma__AvatarUserClient<$Result.GetResult<Prisma.$AvatarUserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AvatarUsers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserCountArgs} args - Arguments to filter AvatarUsers to count.
+     * @example
+     * // Count the number of AvatarUsers
+     * const count = await prisma.avatarUser.count({
+     *   where: {
+     *     // ... the filter for the AvatarUsers we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvatarUserCountArgs>(
+      args?: Subset<T, AvatarUserCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvatarUserCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AvatarUser.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvatarUserAggregateArgs>(args: Subset<T, AvatarUserAggregateArgs>): Prisma.PrismaPromise<GetAvatarUserAggregateType<T>>
+
+    /**
+     * Group by AvatarUser.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUserGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvatarUserGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvatarUserGroupByArgs['orderBy'] }
+        : { orderBy?: AvatarUserGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvatarUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvatarUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AvatarUser model
+   */
+  readonly fields: AvatarUserFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AvatarUser.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvatarUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends AvatarUser$userArgs<ExtArgs> = {}>(args?: Subset<T, AvatarUser$userArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AvatarUser model
+   */
+  interface AvatarUserFieldRefs {
+    readonly id: FieldRef<"AvatarUser", 'String'>
+    readonly avatar_url: FieldRef<"AvatarUser", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AvatarUser findUnique
+   */
+  export type AvatarUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter, which AvatarUser to fetch.
+     */
+    where: AvatarUserWhereUniqueInput
+  }
+
+  /**
+   * AvatarUser findUniqueOrThrow
+   */
+  export type AvatarUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter, which AvatarUser to fetch.
+     */
+    where: AvatarUserWhereUniqueInput
+  }
+
+  /**
+   * AvatarUser findFirst
+   */
+  export type AvatarUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter, which AvatarUser to fetch.
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AvatarUsers to fetch.
+     */
+    orderBy?: AvatarUserOrderByWithRelationInput | AvatarUserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AvatarUsers.
+     */
+    cursor?: AvatarUserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AvatarUsers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AvatarUsers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AvatarUsers.
+     */
+    distinct?: AvatarUserScalarFieldEnum | AvatarUserScalarFieldEnum[]
+  }
+
+  /**
+   * AvatarUser findFirstOrThrow
+   */
+  export type AvatarUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter, which AvatarUser to fetch.
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AvatarUsers to fetch.
+     */
+    orderBy?: AvatarUserOrderByWithRelationInput | AvatarUserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AvatarUsers.
+     */
+    cursor?: AvatarUserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AvatarUsers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AvatarUsers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AvatarUsers.
+     */
+    distinct?: AvatarUserScalarFieldEnum | AvatarUserScalarFieldEnum[]
+  }
+
+  /**
+   * AvatarUser findMany
+   */
+  export type AvatarUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter, which AvatarUsers to fetch.
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AvatarUsers to fetch.
+     */
+    orderBy?: AvatarUserOrderByWithRelationInput | AvatarUserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AvatarUsers.
+     */
+    cursor?: AvatarUserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AvatarUsers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AvatarUsers.
+     */
+    skip?: number
+    distinct?: AvatarUserScalarFieldEnum | AvatarUserScalarFieldEnum[]
+  }
+
+  /**
+   * AvatarUser create
+   */
+  export type AvatarUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AvatarUser.
+     */
+    data: XOR<AvatarUserCreateInput, AvatarUserUncheckedCreateInput>
+  }
+
+  /**
+   * AvatarUser createMany
+   */
+  export type AvatarUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AvatarUsers.
+     */
+    data: AvatarUserCreateManyInput | AvatarUserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AvatarUser createManyAndReturn
+   */
+  export type AvatarUserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * The data used to create many AvatarUsers.
+     */
+    data: AvatarUserCreateManyInput | AvatarUserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AvatarUser update
+   */
+  export type AvatarUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AvatarUser.
+     */
+    data: XOR<AvatarUserUpdateInput, AvatarUserUncheckedUpdateInput>
+    /**
+     * Choose, which AvatarUser to update.
+     */
+    where: AvatarUserWhereUniqueInput
+  }
+
+  /**
+   * AvatarUser updateMany
+   */
+  export type AvatarUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AvatarUsers.
+     */
+    data: XOR<AvatarUserUpdateManyMutationInput, AvatarUserUncheckedUpdateManyInput>
+    /**
+     * Filter which AvatarUsers to update
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * Limit how many AvatarUsers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AvatarUser updateManyAndReturn
+   */
+  export type AvatarUserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * The data used to update AvatarUsers.
+     */
+    data: XOR<AvatarUserUpdateManyMutationInput, AvatarUserUncheckedUpdateManyInput>
+    /**
+     * Filter which AvatarUsers to update
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * Limit how many AvatarUsers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AvatarUser upsert
+   */
+  export type AvatarUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AvatarUser to update in case it exists.
+     */
+    where: AvatarUserWhereUniqueInput
+    /**
+     * In case the AvatarUser found by the `where` argument doesn't exist, create a new AvatarUser with this data.
+     */
+    create: XOR<AvatarUserCreateInput, AvatarUserUncheckedCreateInput>
+    /**
+     * In case the AvatarUser was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AvatarUserUpdateInput, AvatarUserUncheckedUpdateInput>
+  }
+
+  /**
+   * AvatarUser delete
+   */
+  export type AvatarUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
+    /**
+     * Filter which AvatarUser to delete.
+     */
+    where: AvatarUserWhereUniqueInput
+  }
+
+  /**
+   * AvatarUser deleteMany
+   */
+  export type AvatarUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AvatarUsers to delete
+     */
+    where?: AvatarUserWhereInput
+    /**
+     * Limit how many AvatarUsers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AvatarUser.user
+   */
+  export type AvatarUser$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Users
+     */
+    omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    where?: UsersWhereInput
+  }
+
+  /**
+   * AvatarUser without action
+   */
+  export type AvatarUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AvatarUser
+     */
+    select?: AvatarUserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AvatarUser
+     */
+    omit?: AvatarUserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarUserInclude<ExtArgs> | null
   }
 
 
@@ -1882,11 +3092,20 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     password: 'password',
+    avatarUserId: 'avatarUserId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const AvatarUserScalarFieldEnum: {
+    id: 'id',
+    avatar_url: 'avatar_url'
+  };
+
+  export type AvatarUserScalarFieldEnum = (typeof AvatarUserScalarFieldEnum)[keyof typeof AvatarUserScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1903,6 +3122,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -1962,33 +3189,40 @@ export namespace Prisma {
     id?: StringFilter<"Users"> | string
     email?: StringFilter<"Users"> | string
     password?: StringFilter<"Users"> | string
+    avatarUserId?: StringNullableFilter<"Users"> | string | null
     createdAt?: DateTimeFilter<"Users"> | Date | string
     updatedAt?: DateTimeFilter<"Users"> | Date | string
+    avatarUse?: XOR<AvatarUserNullableScalarRelationFilter, AvatarUserWhereInput> | null
   }
 
   export type UsersOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    avatarUserId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    avatarUse?: AvatarUserOrderByWithRelationInput
   }
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    avatarUserId?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
     password?: StringFilter<"Users"> | string
     createdAt?: DateTimeFilter<"Users"> | Date | string
     updatedAt?: DateTimeFilter<"Users"> | Date | string
-  }, "id" | "email">
+    avatarUse?: XOR<AvatarUserNullableScalarRelationFilter, AvatarUserWhereInput> | null
+  }, "id" | "email" | "avatarUserId">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    avatarUserId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UsersCountOrderByAggregateInput
@@ -2003,8 +3237,49 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Users"> | string
     email?: StringWithAggregatesFilter<"Users"> | string
     password?: StringWithAggregatesFilter<"Users"> | string
+    avatarUserId?: StringNullableWithAggregatesFilter<"Users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Users"> | Date | string
+  }
+
+  export type AvatarUserWhereInput = {
+    AND?: AvatarUserWhereInput | AvatarUserWhereInput[]
+    OR?: AvatarUserWhereInput[]
+    NOT?: AvatarUserWhereInput | AvatarUserWhereInput[]
+    id?: StringFilter<"AvatarUser"> | string
+    avatar_url?: StringFilter<"AvatarUser"> | string
+    user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
+  }
+
+  export type AvatarUserOrderByWithRelationInput = {
+    id?: SortOrder
+    avatar_url?: SortOrder
+    user?: UsersOrderByWithRelationInput
+  }
+
+  export type AvatarUserWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    avatar_url?: string
+    AND?: AvatarUserWhereInput | AvatarUserWhereInput[]
+    OR?: AvatarUserWhereInput[]
+    NOT?: AvatarUserWhereInput | AvatarUserWhereInput[]
+    user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
+  }, "id" | "avatar_url">
+
+  export type AvatarUserOrderByWithAggregationInput = {
+    id?: SortOrder
+    avatar_url?: SortOrder
+    _count?: AvatarUserCountOrderByAggregateInput
+    _max?: AvatarUserMaxOrderByAggregateInput
+    _min?: AvatarUserMinOrderByAggregateInput
+  }
+
+  export type AvatarUserScalarWhereWithAggregatesInput = {
+    AND?: AvatarUserScalarWhereWithAggregatesInput | AvatarUserScalarWhereWithAggregatesInput[]
+    OR?: AvatarUserScalarWhereWithAggregatesInput[]
+    NOT?: AvatarUserScalarWhereWithAggregatesInput | AvatarUserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AvatarUser"> | string
+    avatar_url?: StringWithAggregatesFilter<"AvatarUser"> | string
   }
 
   export type UsersCreateInput = {
@@ -2013,12 +3288,14 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    avatarUse?: AvatarUserCreateNestedOneWithoutUserInput
   }
 
   export type UsersUncheckedCreateInput = {
     id?: string
     email: string
     password: string
+    avatarUserId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2029,12 +3306,14 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatarUse?: AvatarUserUpdateOneWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    avatarUserId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2043,6 +3322,7 @@ export namespace Prisma {
     id?: string
     email: string
     password: string
+    avatarUserId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2059,8 +3339,48 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    avatarUserId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvatarUserCreateInput = {
+    id?: string
+    avatar_url: string
+    user?: UsersCreateNestedOneWithoutAvatarUseInput
+  }
+
+  export type AvatarUserUncheckedCreateInput = {
+    id?: string
+    avatar_url: string
+    user?: UsersUncheckedCreateNestedOneWithoutAvatarUseInput
+  }
+
+  export type AvatarUserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneWithoutAvatarUseNestedInput
+  }
+
+  export type AvatarUserUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
+    user?: UsersUncheckedUpdateOneWithoutAvatarUseNestedInput
+  }
+
+  export type AvatarUserCreateManyInput = {
+    id?: string
+    avatar_url: string
+  }
+
+  export type AvatarUserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvatarUserUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2078,6 +3398,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2089,10 +3424,21 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type AvatarUserNullableScalarRelationFilter = {
+    is?: AvatarUserWhereInput | null
+    isNot?: AvatarUserWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type UsersCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    avatarUserId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2101,6 +3447,7 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    avatarUserId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2109,6 +3456,7 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    avatarUserId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2131,6 +3479,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2145,12 +3511,84 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UsersNullableScalarRelationFilter = {
+    is?: UsersWhereInput | null
+    isNot?: UsersWhereInput | null
+  }
+
+  export type AvatarUserCountOrderByAggregateInput = {
+    id?: SortOrder
+    avatar_url?: SortOrder
+  }
+
+  export type AvatarUserMaxOrderByAggregateInput = {
+    id?: SortOrder
+    avatar_url?: SortOrder
+  }
+
+  export type AvatarUserMinOrderByAggregateInput = {
+    id?: SortOrder
+    avatar_url?: SortOrder
+  }
+
+  export type AvatarUserCreateNestedOneWithoutUserInput = {
+    create?: XOR<AvatarUserCreateWithoutUserInput, AvatarUserUncheckedCreateWithoutUserInput>
+    connectOrCreate?: AvatarUserCreateOrConnectWithoutUserInput
+    connect?: AvatarUserWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type AvatarUserUpdateOneWithoutUserNestedInput = {
+    create?: XOR<AvatarUserCreateWithoutUserInput, AvatarUserUncheckedCreateWithoutUserInput>
+    connectOrCreate?: AvatarUserCreateOrConnectWithoutUserInput
+    upsert?: AvatarUserUpsertWithoutUserInput
+    disconnect?: AvatarUserWhereInput | boolean
+    delete?: AvatarUserWhereInput | boolean
+    connect?: AvatarUserWhereUniqueInput
+    update?: XOR<XOR<AvatarUserUpdateToOneWithWhereWithoutUserInput, AvatarUserUpdateWithoutUserInput>, AvatarUserUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type UsersCreateNestedOneWithoutAvatarUseInput = {
+    create?: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAvatarUseInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type UsersUncheckedCreateNestedOneWithoutAvatarUseInput = {
+    create?: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAvatarUseInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type UsersUpdateOneWithoutAvatarUseNestedInput = {
+    create?: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAvatarUseInput
+    upsert?: UsersUpsertWithoutAvatarUseInput
+    disconnect?: UsersWhereInput | boolean
+    delete?: UsersWhereInput | boolean
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutAvatarUseInput, UsersUpdateWithoutAvatarUseInput>, UsersUncheckedUpdateWithoutAvatarUseInput>
+  }
+
+  export type UsersUncheckedUpdateOneWithoutAvatarUseNestedInput = {
+    create?: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAvatarUseInput
+    upsert?: UsersUpsertWithoutAvatarUseInput
+    disconnect?: UsersWhereInput | boolean
+    delete?: UsersWhereInput | boolean
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutAvatarUseInput, UsersUpdateWithoutAvatarUseInput>, UsersUncheckedUpdateWithoutAvatarUseInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2165,6 +3603,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2206,6 +3658,34 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2218,6 +3698,90 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type AvatarUserCreateWithoutUserInput = {
+    id?: string
+    avatar_url: string
+  }
+
+  export type AvatarUserUncheckedCreateWithoutUserInput = {
+    id?: string
+    avatar_url: string
+  }
+
+  export type AvatarUserCreateOrConnectWithoutUserInput = {
+    where: AvatarUserWhereUniqueInput
+    create: XOR<AvatarUserCreateWithoutUserInput, AvatarUserUncheckedCreateWithoutUserInput>
+  }
+
+  export type AvatarUserUpsertWithoutUserInput = {
+    update: XOR<AvatarUserUpdateWithoutUserInput, AvatarUserUncheckedUpdateWithoutUserInput>
+    create: XOR<AvatarUserCreateWithoutUserInput, AvatarUserUncheckedCreateWithoutUserInput>
+    where?: AvatarUserWhereInput
+  }
+
+  export type AvatarUserUpdateToOneWithWhereWithoutUserInput = {
+    where?: AvatarUserWhereInput
+    data: XOR<AvatarUserUpdateWithoutUserInput, AvatarUserUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AvatarUserUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvatarUserUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    avatar_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsersCreateWithoutAvatarUseInput = {
+    id?: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UsersUncheckedCreateWithoutAvatarUseInput = {
+    id?: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UsersCreateOrConnectWithoutAvatarUseInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+  }
+
+  export type UsersUpsertWithoutAvatarUseInput = {
+    update: XOR<UsersUpdateWithoutAvatarUseInput, UsersUncheckedUpdateWithoutAvatarUseInput>
+    create: XOR<UsersCreateWithoutAvatarUseInput, UsersUncheckedCreateWithoutAvatarUseInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutAvatarUseInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutAvatarUseInput, UsersUncheckedUpdateWithoutAvatarUseInput>
+  }
+
+  export type UsersUpdateWithoutAvatarUseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UsersUncheckedUpdateWithoutAvatarUseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

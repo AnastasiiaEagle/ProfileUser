@@ -3,8 +3,10 @@
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import axios from '../utils/axios'
+import  axios from '../utils/axios'
 import Header from "@/components/Header/Header";
+import Siderbar from "@/components/Acider/Siderbar";
+import SaveImgForm from "@/components/SaveImgForm/SaveImgForm";
 
 
 export default function Home() {
@@ -38,7 +40,9 @@ export default function Home() {
                     localStorage.setItem('accessToken', res.data.accessToken);
                 }
             } catch (error: any) {
-                console.log(error)
+              if(error){
+                router.push('/auth')
+              }
             }
         }
       }
@@ -50,7 +54,10 @@ export default function Home() {
 
   return (
     <>
-      <Header></Header>
+      <Header />
+      <Siderbar/>
+      <SaveImgForm/>
+      
     </>
   );
 }
