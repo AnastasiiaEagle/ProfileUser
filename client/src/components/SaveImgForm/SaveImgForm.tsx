@@ -15,7 +15,7 @@ export default function SaveImgForm(){
 
     const uploadAvatar = async (file: File) => {
         const formData = new FormData();
-        formData.append('avatar', file); // "avatar" має збігатися з полем у FileInterceptor
+        formData.append('avatar', file);
 
         const response = await axios.post('/avatar/file', formData, {
             headers: {
@@ -23,14 +23,14 @@ export default function SaveImgForm(){
             },
         });
 
-        return response.data; // { url: '/uploadd/...' }
+        return response.data;
     }
 
     const handleUpload = async () => {
         if (!file) return;
         try {
         const result = await uploadAvatar(file);
-        setImageUrl(result.url); // Наприклад: "/uploadd/filename.jpg"
+        setImageUrl(result.url);
         } catch (err) {
         console.error('Upload failed:', err);
         }
