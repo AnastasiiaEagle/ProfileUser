@@ -54,10 +54,11 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <Siderbar/>
-      <SaveImgForm/>
-      
+      <Header />    
+      <div className="flex">
+        <Siderbar/>
+        <SaveImgForm/>
+      </div>  
     </>
   );
 }

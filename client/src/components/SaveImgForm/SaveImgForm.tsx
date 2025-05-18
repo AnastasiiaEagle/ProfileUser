@@ -30,15 +30,15 @@ export default function SaveImgForm(){
         if (!file) return;
         try {
         const result = await uploadAvatar(file);
-        console.log(result)
         setImageUrl(result);
+        window.location.reload();
         } catch (err) {
         console.error('Upload failed:', err);
         }
     }
 
     useEffect(()=>{
-        console.log(imageUrl)
+        
     },[imageUrl])
 
     return(
