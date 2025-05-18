@@ -25,7 +25,7 @@ export class AvatarService implements PipeTransform{
         })
     }
 
-    inRefreshToken = async (req: Request): Promise<string> =>{ // Дістаємо з токену користувача
+    private inRefreshToken = async (req: Request): Promise<string> =>{ // Дістаємо з токену користувача
         const refreshToken = req.cookies['refreshToken'];
 
         if (!refreshToken || refreshToken === 'refreshToken') {
@@ -37,7 +37,7 @@ export class AvatarService implements PipeTransform{
         return userId
     }
 
-    deleteImg = (pathImg: string) =>{ //Видаляємо зображення
+    private deleteImg = (pathImg: string) =>{ //Видаляємо зображення
         const filePath = path.join(process.cwd(), 'uploads', pathImg)
 
         if (!fs.existsSync(filePath)) {
@@ -94,11 +94,24 @@ export class AvatarService implements PipeTransform{
             }
         })
         
-        console.log(path)
-        return "Збереження пройшло успішно"
+        return path
     }
 
-    async show(){
+    async show(req: Request,){
+        const userId: string = await this.inRefreshToken(req)
 
+        const avatar = await this.prismaService.users.findUnique({
+            where:{
+                id: userId
+            },
+            select:{
+                avatarUse: true
+            }
+        })
+
+        console.log(avatar?.avatarUse?.avatar_url)
+        return avatar?.avatarUse?.avatar_url
     }
+
+
 }

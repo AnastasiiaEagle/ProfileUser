@@ -1,7 +1,7 @@
 'use client'
 
 import axios from "@/utils/axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SaveImgForm(){
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -30,11 +30,16 @@ export default function SaveImgForm(){
         if (!file) return;
         try {
         const result = await uploadAvatar(file);
-        setImageUrl(result.url);
+        console.log(result)
+        setImageUrl(result);
         } catch (err) {
         console.error('Upload failed:', err);
         }
     }
+
+    useEffect(()=>{
+        console.log(imageUrl)
+    },[imageUrl])
 
     return(
         <div className="space-y-4">
@@ -48,7 +53,7 @@ export default function SaveImgForm(){
             {imageUrl && (
                 <div>
                 <p className="text-sm">Попередній перегляд:</p>
-                <img src={imageUrl} alt="Аватар" className="w-32 h-32 rounded-full object-cover" />
+                <img src={`http://localhost:3000/uploads/${imageUrl}`} alt="Аватар" className="w-32 h-32 rounded-full object-cover" />
                 </div>
             )}
         </div>

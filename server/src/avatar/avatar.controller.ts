@@ -1,4 +1,4 @@
-import { Controller, Post, Req, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Req, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { AvatarService } from './avatar.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Request } from 'express';
@@ -24,5 +24,10 @@ export class AvatarController {
   )
   async save(@Req() req: Request, @UploadedFile() file: Express.Multer.File){
     return await this.avatarService.save(req, file.filename)
+  }
+
+  @Get('show')
+  show(@Req() req: Request){
+    return this.avatarService.show(req)
   }
 }
